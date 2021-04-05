@@ -1,11 +1,14 @@
 package com.jojoldu.webservice2.domain.Users;
 
+import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Getter
 public class User{
 
     @Id
@@ -18,7 +21,7 @@ public class User{
     private String password;
     private String name;
     private String email;
-    
+
     public void setUserId(String userId) {
         this.userId=userId;
     }

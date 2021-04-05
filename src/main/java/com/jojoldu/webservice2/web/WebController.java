@@ -19,7 +19,6 @@ public class WebController{
         return "showtitle2";
     }
 
-    //when localhost:8080/delete is the browser, the Post object with Id value 1 is deleted from Posts table
     @GetMapping("/delete/{id}")
     public String deletepost(@PathVariable Long id){
         postrepository.deleteById(id);
@@ -29,11 +28,6 @@ public class WebController{
     @GetMapping("")
     public String show_home(){
         return "home";
-    }
-
-    @GetMapping("/users/form")
-    public String form(){
-        return "loginform";
     }
 
 
