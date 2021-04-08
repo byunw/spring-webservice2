@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
@@ -30,7 +31,7 @@ public class UserController{
     }
 
     @PostMapping("/login")
-    public String login(String userId,String password){
+    public String login(String userId, String password, HttpSession session){
 
         //로그인 정보(사용자아이디,비빌번호)가 회원가입할때 기입한 정보랑 일치하면 로그인 시켜주기
         User user=usersRepository.findByUserId(userId);
@@ -47,10 +48,12 @@ public class UserController{
         //사용자가 로그인할때 친 사용자아이디와 패스워드를 가지는 entity가 데이터베이스에 존재하는경우
         //회원가입을했기때문에 로그인시 치는 사용자아이디/비빌번호 값을 가진 entity가 존재
 
-        //회원가입한 사용자아이디/패스워드가 로그인시 입력된경우
+        //로그인시 입력한 사용자아이디/패스워드가 회원가입할때 작성된 사용자아이디/패스워드 데이터와 동일한 경우
         if(user.getPassword().equals(password)){
+            session.setAttribute("sessioneduser",user);
             return "loginsuccessful";
         }
+
 
         //회원가입한 사용자아이디인데 해당아이디 비빌번호랑 다른경우
         if(!user.getPassword().equals(password)){
@@ -62,9 +65,6 @@ public class UserController{
         return "";
 
     }
-
-
-
 
 
 }

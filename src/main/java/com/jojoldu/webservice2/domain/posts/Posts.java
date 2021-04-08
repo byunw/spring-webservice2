@@ -1,12 +1,10 @@
 package com.jojoldu.webservice2.domain.posts;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.jojoldu.webservice2.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
