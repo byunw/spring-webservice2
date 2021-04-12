@@ -4,6 +4,7 @@ import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.Users.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @AllArgsConstructor
 public class UserController{
+
 
     private UsersRepository usersRepository;
 
@@ -50,10 +52,13 @@ public class UserController{
 
         //로그인시 입력한 사용자아이디/패스워드가 회원가입할때 작성된 사용자아이디/패스워드 데이터와 동일한 경우
         if(user.getPassword().equals(password)){
+            //        model.addAttribute("posts",postrepository.findAll());
+
             session.setAttribute("sessioneduser",user);
             return "loginsuccessful";
-        }
 
+
+        }
 
         //회원가입한 사용자아이디인데 해당아이디 비빌번호랑 다른경우
         if(!user.getPassword().equals(password)){
