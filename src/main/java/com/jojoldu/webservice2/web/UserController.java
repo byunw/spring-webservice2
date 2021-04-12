@@ -4,15 +4,14 @@ import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.Users.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 
+
 @Controller
 @AllArgsConstructor
 public class UserController{
-
 
     private UsersRepository usersRepository;
 
@@ -24,7 +23,7 @@ public class UserController{
     @PostMapping("/create")
     public String create_save(User user){
         usersRepository.save(user);
-        return "userdatasave";
+        return "redirect:/";
     }
 
     @GetMapping("/loginpage")
@@ -33,7 +32,7 @@ public class UserController{
     }
 
     @PostMapping("/login")
-    public String login(String userId, String password, HttpSession session){
+    public String login(String userId, String password,HttpSession session){
 
         //로그인 정보(사용자아이디,비빌번호)가 회원가입할때 기입한 정보랑 일치하면 로그인 시켜주기
         User user=usersRepository.findByUserId(userId);
@@ -52,10 +51,9 @@ public class UserController{
 
         //로그인시 입력한 사용자아이디/패스워드가 회원가입할때 작성된 사용자아이디/패스워드 데이터와 동일한 경우
         if(user.getPassword().equals(password)){
-            //        model.addAttribute("posts",postrepository.findAll());
 
             session.setAttribute("sessioneduser",user);
-            return "loginsuccessful";
+            return "redirect:/";
 
 
         }
@@ -68,6 +66,14 @@ public class UserController{
         //this line of code to get rid of missing return statement error
         //for the other cases except the above 3 cases, this method returns ""
         return "";
+
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+
+        session.removeAttribute("sessioneduser");
+        return "redirect:/";
 
     }
 

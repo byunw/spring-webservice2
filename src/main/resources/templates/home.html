@@ -13,13 +13,16 @@
 
                 <div class="navbar-nav ml-auto">
 
-                    {{#sessioneduser}}
-                        <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
+                    {{^sessioneduser}}
+                        <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+                        <a href="/loginpage"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button></a>
+                        <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
                     {{/sessioneduser}}
 
-                    <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
-                    <a href="/loginpage"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button></a>
-                    <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
+                    {{#sessioneduser}}
+                        <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
+                        <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+                    {{/sessioneduser}}
 
                 </div>
 
@@ -37,15 +40,14 @@
             </thead>
 
             <tbody id="tbody">
-            {{#each posts}}
+            {{#posts}}
                 <tr>
                     <td>{{id}}</td>
                     <td>{{title}}</td>
                     <td>{{content}}</td>
                 </tr>
-            {{/each}}
+            {{/posts}}
             </tbody>
-
 
         </table>
 

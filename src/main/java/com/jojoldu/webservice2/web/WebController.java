@@ -54,8 +54,9 @@ public class WebController{
     @PostMapping("/savepost")
     public String save_post(Posts post){
         postrepository.save(post);
-        return "postsaved";
+        return "redirect:/";
     }
+
 
 
 }
