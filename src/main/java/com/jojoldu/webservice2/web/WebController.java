@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class WebController{
 
     private PostsRepository postrepository;
-    
+
     @GetMapping("/delete/{id}")
     public String deletepost(@PathVariable Long id){
         postrepository.deleteById(id);
