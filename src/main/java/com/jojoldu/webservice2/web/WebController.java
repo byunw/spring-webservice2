@@ -14,11 +14,7 @@ public class WebController{
 
     private PostsRepository postrepository;
 
-    @GetMapping("/showtitle")
-    public String showtitle(Model model){
-        model.addAttribute("posts",postrepository.findAll());
-        return "showtitle2";
-    }
+
 
     @GetMapping("/delete/{id}")
     public String deletepost(@PathVariable Long id){
@@ -30,7 +26,7 @@ public class WebController{
     @GetMapping("")
     public String show_home(Model model){
         model.addAttribute("posts",postrepository.findAll());
-        return "home";
+        return "page/home";
     }
 
     @GetMapping("/writepost")
