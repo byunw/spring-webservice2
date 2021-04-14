@@ -19,7 +19,6 @@ public class UserController{
         return "page/registerform";
     }
 
-
     @PostMapping("/create")
     public String create_save(User user){
 
@@ -63,7 +62,6 @@ public class UserController{
 
             session.setAttribute("sessioneduser",user);
             return "redirect:/";
-
 
         }
 
