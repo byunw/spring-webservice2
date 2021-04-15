@@ -51,10 +51,8 @@ public class UserController{
         }
 
         if(user.getPassword().equals(password)){
-
             session.setAttribute("sessioneduser",user);
             return "redirect:/";
-
         }
 
         if(!user.getPassword().equals(password)){
