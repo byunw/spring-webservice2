@@ -11,8 +11,8 @@ spring:
         dialect: org.hibernate.dialect.MySQLInnoDBDialect
     hibernate:
       ddl-auto: update
-    generate-ddl: true
     
+
 
 
 
