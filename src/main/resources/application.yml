@@ -5,13 +5,11 @@ spring:
     password: Alex33942540!
     driver-class-name: org.mariadb.jdbc.Driver
 
+
   jpa:
     hibernate:
         ddl-auto: update
-
   
-
-
   mustache:
     suffix: .html
     expose-session-attributes: true
