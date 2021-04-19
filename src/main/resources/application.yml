@@ -4,12 +4,14 @@ spring:
     username: alex1461
     password: Alex33942540!
     driver-class-name: org.mariadb.jdbc.Driver
-  
+
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLInnoDBDialect
-
+    hibernate:
+      ddl-auto: update
+      
 
 
   mustache:
