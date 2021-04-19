@@ -6,14 +6,10 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLInnoDBDialect
     hibernate:
-      ddl-auto: update
-    
+        ddl-auto: update
 
-
+  
 
 
   mustache:
