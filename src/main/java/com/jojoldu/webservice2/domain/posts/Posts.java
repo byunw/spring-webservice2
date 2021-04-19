@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Setter
 public class Posts extends BaseTimeEntity{
-    
+
     @Id
     @GeneratedValue
     private Long id;

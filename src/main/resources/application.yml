@@ -1,10 +1,14 @@
 spring:
-  h2:
-    console:
-      enabled: true
-
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:mariadb://3.36.213.244:8080/kwsinsa
+    username: alex1461
+    password: Alex33942540!
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 
   mustache:
     suffix: .html
