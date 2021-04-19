@@ -9,7 +9,8 @@ spring:
   jpa:
     hibernate:
         ddl-auto: update
-  
+        
+
   mustache:
     suffix: .html
     expose-session-attributes: true
