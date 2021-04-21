@@ -29,7 +29,7 @@ public class UserController{
         return "redirect:/";
 
     }
-    
+
     @GetMapping("/users/form")
     public String register_form(){
         return "page/registerform";
