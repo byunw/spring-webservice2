@@ -11,13 +11,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 @AllArgsConstructor
 public class UserController{
-    
+
     private UsersRepository usersRepository;
 
-    @GetMapping("/users/form")
-    public String register_form(){
-        return "page/registerform";
-    }
 
     @PostMapping("/create")
     public String create_save(User user){
@@ -32,6 +28,11 @@ public class UserController{
 
         return "redirect:/";
 
+    }
+    
+    @GetMapping("/users/form")
+    public String register_form(){
+        return "page/registerform";
     }
 
     @GetMapping("/loginpage")
