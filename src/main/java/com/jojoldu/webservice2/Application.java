@@ -11,7 +11,7 @@ public class Application{
 
     public static final String APPLICATION_LOCATIONS="spring.config.location="
             +"classpath:application.yml,"+"src/main/resources/real-application.yml";
-            
+
 
     public static void main(String[] args){
 
