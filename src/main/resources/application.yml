@@ -1,21 +1,7 @@
 spring:
-  datasource:
-    url: jdbc:mariadb://3.36.213.244:8080/kwsinsa
-    username: alex1461
-    password: Alex33942540!
-    driver-class-name: org.mariadb.jdbc.Driver
-
-  jpa:
-    hibernate:
-        ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   mustache:
     suffix: .html
     expose-session-attributes: true
-
-server:
-  port: 8080
-  
 
 
 
