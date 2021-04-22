@@ -1,8 +1,13 @@
 
+---
 spring:
   mustache:
     suffix: .html
     expose-session-attributes: true
+  profiles:
+    include: real-db
+
+
 
 
 
