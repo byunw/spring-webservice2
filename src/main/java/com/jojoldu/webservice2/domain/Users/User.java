@@ -20,21 +20,28 @@ public class User{
     private String name;
     private String email;
 
-    //setter method to popluate the fields of the current User object
-
-    public void setUserId(String userId) { this.userId=userId;}
-
-    public void setPassword(String password) {
+    public User(String userId,String password,String name,String email){
+        this.userId=userId;
         this.password=password;
-    }
-
-    public void setName(String name) {
         this.name=name;
-    }
-
-    public void setEmail(String email) {
         this.email=email;
     }
+    
+    //setter method to popluate the fields of the current User object
+
+//    public void setUserId(String userId) { this.userId=userId;}
+//
+//    public void setPassword(String password) {
+//        this.password=password;
+//    }
+//
+//    public void setName(String name) {
+//        this.name=name;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email=email;
+//    }
 
     @Override
     public String toString() {
