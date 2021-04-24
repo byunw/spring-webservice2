@@ -14,7 +14,6 @@ public class UserController{
 
     private UsersRepository usersRepository;
 
-
     @PostMapping("/create")
     public String create_save(User user){
 

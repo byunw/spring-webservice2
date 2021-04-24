@@ -1,14 +1,13 @@
 package com.jojoldu.webservice2.domain.posts;
 
 import com.jojoldu.webservice2.domain.BaseTimeEntity;
+import com.jojoldu.webservice2.domain.Users.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -26,10 +25,12 @@ public class Posts extends BaseTimeEntity{
     @Column(columnDefinition = "TEXT",nullable=false)
     private String content;
 
-    private String author;
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name="fk_question_writer"))
+    private User author;
 
     @Builder
-    public Posts(String title,String content,String author){
+    public Posts(String title,String content,User author){
         this.title=title;
         this.content=content;
         this.author=author;

@@ -20,6 +20,7 @@ public class User{
     private String name;
     private String email;
 
+
     public void setUserId(String userId) { this.userId=userId;}
 
     public void setPassword(String password) {

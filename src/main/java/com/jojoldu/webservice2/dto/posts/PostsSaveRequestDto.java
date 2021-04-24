@@ -1,5 +1,6 @@
 package com.jojoldu.webservice2.dto.posts;
 
+import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.posts.Posts;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,7 @@ public class PostsSaveRequestDto{
 
     private String title;
     private String content;
-    private String author;
+    private User author;
 
     public Posts To_Entity(){
 
