@@ -1,7 +1,6 @@
 package com.jojoldu.webservice2.domain.posts;
 
 import com.jojoldu.webservice2.domain.BaseTimeEntity;
-import com.jojoldu.webservice2.domain.Users.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -33,12 +33,6 @@ public class WebRestController{
     }
 
 
-    
-//    @PostMapping("/posts")
-//    public String save(@RequestBody PostsSaveRequestDto dto){
-//        postrepository.save(dto.To_Entity());
-//        return "successfully saved into Posts table";
-//    }
 
 
 

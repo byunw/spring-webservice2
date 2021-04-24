@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 public class User{
-
+    
     @Id
     @GeneratedValue
     private Long id;
@@ -26,22 +26,6 @@ public class User{
         this.name=name;
         this.email=email;
     }
-    
-    //setter method to popluate the fields of the current User object
-
-//    public void setUserId(String userId) { this.userId=userId;}
-//
-//    public void setPassword(String password) {
-//        this.password=password;
-//    }
-//
-//    public void setName(String name) {
-//        this.name=name;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email=email;
-//    }
 
     @Override
     public String toString() {
