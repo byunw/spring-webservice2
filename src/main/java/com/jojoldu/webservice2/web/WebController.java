@@ -33,7 +33,6 @@ public class WebController{
         //check if the current user has logged
             //if the user has logged in, show a Post write up page
             //if the user has not logged in, tell the user to login first
-
         Object sessionedUser=session.getAttribute("sessioneduser");
 
         //로그인 하지않은 경우: ex, 홈페이지에서 바로 게시글 작성 버튼누르는 경우
@@ -44,11 +43,14 @@ public class WebController{
         //로그인 성공한경우(회원가입할떄 작성한 사용자아이디/패스워드를 로그인시 작성한경우),게시글 작성 버튼눌렀을때 게시글 작성 페이지 보여주기
         return "page/writepostpage";
     }
-    
+
     @PostMapping("/savepost")
     public String save_post(Posts post){
+        
         postrepository.save(post);
         return "redirect:/";
+
+
     }
 
 

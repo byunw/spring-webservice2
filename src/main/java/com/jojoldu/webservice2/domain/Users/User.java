@@ -20,6 +20,7 @@ public class User{
     private String name;
     private String email;
 
+    //setter method to popluate the fields of the current User object
 
     public void setUserId(String userId) { this.userId=userId;}
 

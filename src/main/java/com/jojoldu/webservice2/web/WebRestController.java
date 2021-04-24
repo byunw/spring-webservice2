@@ -2,7 +2,6 @@ package com.jojoldu.webservice2.web;
 
 import com.jojoldu.webservice2.domain.posts.Posts;
 import com.jojoldu.webservice2.domain.posts.PostsRepository;
-import com.jojoldu.webservice2.dto.posts.PostsSaveRequestDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
