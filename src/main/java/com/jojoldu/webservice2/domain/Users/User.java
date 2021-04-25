@@ -2,7 +2,6 @@ package com.jojoldu.webservice2.domain.Users;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 public class User{
-
+    
     @Id
     @GeneratedValue
     private Long id;
@@ -22,7 +21,7 @@ public class User{
     private String password;
     private String name;
     private String email;
-    
+
     public User(String userId,String password,String name,String email){
         this.userId=userId;
         this.password=password;
