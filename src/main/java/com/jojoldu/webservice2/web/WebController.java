@@ -23,8 +23,11 @@ public class WebController{
     //show_home은 Posts(table)에 존재하는 entity들을 homepage에 보여주는 코드
     @GetMapping("")
     public String show_home(Model model){
+
+        System.out.println("here");
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
+
     }
 
     @GetMapping("/writepost")

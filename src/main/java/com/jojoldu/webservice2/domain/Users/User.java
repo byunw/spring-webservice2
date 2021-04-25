@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 public class User{
-    
+
     @Id
     @GeneratedValue
     private Long id;
