@@ -20,7 +20,8 @@ public class UserController{
         try{
             usersRepository.save(user);
         }
-
+        
+        //사용자가 다른사용자가 사용한 사용자아이디로 회원가입하려고하면 에러뜨고 에러잡아서 page/trydifferentid 브라우져에 보내줌
         catch (Exception e){
             return "page/trydifferentid";
         }
