@@ -1,5 +1,6 @@
 package com.jojoldu.webservice2.web;
 
+import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.posts.Posts;
 import com.jojoldu.webservice2.domain.posts.PostsRepository;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 public class WebController{
 
     private PostsRepository postrepository;
+
 
     @GetMapping("/delete/{id}")
     public String deletepost(@PathVariable Long id){
@@ -37,21 +39,19 @@ public class WebController{
             //if the user has not logged in, tell the user to login first
         Object sessionedUser=session.getAttribute("sessioneduser");
 
-        //로그인 하지않은 경우: ex, 홈페이지에서 바로 게시글 작성 버튼누르는 경우
         if(sessionedUser==null){
             return "page/loginpage";
         }
 
-        //로그인 성공한경우(회원가입할떄 작성한 사용자아이디/패스워드를 로그인시 작성한경우),게시글 작성 버튼눌렀을때 게시글 작성 페이지 보여주기
         return "page/writepostpage";
     }
 
     @PostMapping("/savepost")
-    public String save_post(Posts post){
+    public String save_post(String title,String content,HttpSession session){
 
-        postrepository.save(post);
+        postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
         return "redirect:/";
-
+        
 
     }
 
