@@ -27,10 +27,10 @@ public class Posts extends BaseTimeEntity{
     @JoinColumn(name="author_id",referencedColumnName="id")
     private User author;
     
-
-    public Posts(String title,String content){
+    public Posts(String title,String content,User author){
         this.title=title;
         this.content=content;
+        this.author=author;
     }
 
 
