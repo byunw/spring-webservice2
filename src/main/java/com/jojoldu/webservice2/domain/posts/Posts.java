@@ -24,8 +24,9 @@ public class Posts extends BaseTimeEntity{
     private String content;
 
     @ManyToOne
-    @JoinColumn(name="author_id",referencedColumnName="id")
+    @JoinColumn(name="author_id")
     private User author;
+
     
     public Posts(String title,String content,User author){
         this.title=title;
