@@ -47,12 +47,36 @@ public class WebController{
         postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
         return "redirect:/";
     }
-    
+
     @GetMapping("/postdetail/{id}")
-    public String show_detail(@PathVariable Long id,Model model){
+    public String show_detail(@PathVariable Long id,Model model,HttpSession session){
 
         model.addAttribute("post",postrepository.getOne(id));
-        return "page/showdetail";
+        //자기(로그인 사용자)가 작성한 글이면, 글 내용보여주고 게시글삭제기능도 보여주기
+        Posts post=postrepository.getOne(id);
+
+        Object loginuser=session.getAttribute("sessioneduser");
+
+        //로그인되지않은상태
+        if(loginuser==null){
+            return "page/showdetail_notlogin";
+        }
+
+        //로그인한상태
+        else{
+
+            //자기가 작성한 글 지우는 경우
+            User User_Object=(User) loginuser;
+            if(post.getAuthor().getUserId()==User_Object.getUserId()){
+                return "page/showdetailself";
+            }
+
+            //자기이외의 사람이 작성한 글 지우는 경우
+            else{
+                return "page/deleteotherpost";
+            }
+
+        }
 
     }
 
