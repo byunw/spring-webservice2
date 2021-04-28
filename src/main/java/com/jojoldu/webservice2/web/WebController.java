@@ -67,6 +67,11 @@ public class WebController{
 
             //자기가 작성한 글 지우는 경우
             User User_Object=(User) loginuser;
+
+            System.out.println(post.getAuthor().getUserId());
+            System.out.println(User_Object.getUserId());
+            
+
             if(post.getAuthor().getUserId()==User_Object.getUserId()){
                 return "page/showdetailself";
             }
