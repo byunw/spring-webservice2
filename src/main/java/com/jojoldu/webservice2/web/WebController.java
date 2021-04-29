@@ -43,7 +43,6 @@ public class WebController{
 
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
-        //                           사용자가 친 제목, 사용자가 친 게시글 내용,User object
         postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
         return "redirect:/";
     }
@@ -52,20 +51,17 @@ public class WebController{
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
 
         model.addAttribute("post",postrepository.getOne(id));
-        //자기(로그인 사용자)가 작성한 글이면, 글 내용보여주고 게시글삭제기능도 보여주기
         Posts post=postrepository.getOne(id);
 
         Object loginuser=session.getAttribute("sessioneduser");
 
-        //로그인되지않은상태
         if(loginuser==null){
             return "page/showdetail_notlogin";
         }
 
         //로그인한상태
         else{
-            
-            //자기가 작성한 글 지우는 경우
+
             User User_Object=(User) loginuser;
 
             if(post.getAuthor().getUserId().equals(User_Object.getUserId())){
@@ -79,6 +75,14 @@ public class WebController{
 
         }
 
+    }
+
+    @DeleteMapping("/deletepost/{id}")
+    public String delete_post(@PathVariable Long id){
+
+        postrepository.deleteById(id);
+        return "redirect:/";
+        
     }
 
 }
