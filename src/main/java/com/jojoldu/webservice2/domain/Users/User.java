@@ -2,7 +2,6 @@ package com.jojoldu.webservice2.domain.Users;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,9 +38,5 @@ public class User{
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return userId+" "+password+" "+name+" "+email;
-    }
 
 }

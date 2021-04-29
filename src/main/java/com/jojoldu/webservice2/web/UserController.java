@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 
+
 @Controller
 @AllArgsConstructor
 public class UserController{
@@ -20,8 +21,7 @@ public class UserController{
         try{
             usersRepository.save(user);
         }
-        
-        //사용자가 다른사용자가 사용한 사용자아이디로 회원가입하려고하면 에러뜨고 에러잡아서 page/trydifferentid 브라우져에 보내줌
+
         catch (Exception e){
             return "page/trydifferentid";
         }
@@ -45,8 +45,6 @@ public class UserController{
 
         User user=usersRepository.findByUserId(userId);
 
-        //case 1: 입력한 패스워드를 값으로 가지는 entity는 User(table)하나 입력한 사용자아이디값을 가지는 entity는 존재하지않을경우
-        //case 2: 입력한 패스워드 값을 가지는 entity도 없고 입력한 사용자아이디값을 가지는 entity도 없는경우
         if(user==null){
             return "page/idnotexist";
         }
