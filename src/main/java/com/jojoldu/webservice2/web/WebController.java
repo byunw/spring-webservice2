@@ -76,10 +76,10 @@ public class WebController{
         }
 
     }
-
-    @DeleteMapping("deletepost/{id}")
+    
+    @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-        System.out.println("here");
+
         postrepository.deleteById(id);
         return "redirect:/";
 
