@@ -36,8 +36,8 @@
     {{#post}}
         <tr>
             <td>{{content}}</td>
-            <form class="form-delete" action="/deletepost/{{id}}" method="GET">
-                <input type="hidden" name="_method" value="DELETE">
+            <form class="form-delete" action="/{{id}}" method="POST">
+                <input type="hidden" name="_method" value="delete">
                 <button class="link-delete-post" type="submit">게시글 삭제</button>
             </form>
         </tr>
