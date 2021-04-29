@@ -77,9 +77,9 @@ public class WebController{
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-        
+
         postrepository.deleteById(id);
         return "redirect:/";
 
