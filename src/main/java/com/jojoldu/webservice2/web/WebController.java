@@ -17,12 +17,11 @@ public class WebController{
 
     @GetMapping("")
     public String show_home(Model model){
-
+        System.out.println("comes here");
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
-
     }
-
+    
     @GetMapping("/delete/{id}")
     public String deletepost(@PathVariable Long id){
         postrepository.deleteById(id);
@@ -52,7 +51,6 @@ public class WebController{
 
         model.addAttribute("post",postrepository.getOne(id));
         Posts post=postrepository.getOne(id);
-
         Object loginuser=session.getAttribute("sessioneduser");
 
         if(loginuser==null){
@@ -83,26 +81,18 @@ public class WebController{
 
     @GetMapping("/modifyform/{id}")
     public String show_updatepage(@PathVariable Long id,Model model){
-
         model.addAttribute("post",postrepository.getOne(id));
         return "page/modifypost";
-
-
     }
 
     @PutMapping("/updatepost/{id}")
     public String update_post(@PathVariable Long id,String title,String contents){
-
         Posts post=postrepository.getOne(id);
         post.setTitle(title);
         post.setContent(contents);
         postrepository.save(post);
         return "redirect:/";
-        
-
     }
-
-
 
 
 }
