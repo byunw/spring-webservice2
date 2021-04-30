@@ -59,7 +59,6 @@ public class WebController{
             return "page/showdetail_notlogin";
         }
 
-        //로그인한상태
         else{
 
             User User_Object=(User) loginuser;
@@ -68,7 +67,6 @@ public class WebController{
                 return "page/showdetailself";
             }
 
-            //자기이외의 사람이 작성한 글 지우는 경우
             else{
                 return "page/deleteotherpost";
             }
@@ -79,10 +77,18 @@ public class WebController{
 
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-
         postrepository.deleteById(id);
         return "redirect:/";
-
     }
+
+    @PutMapping("/modify/{id}")
+    public String show_updatepage(@PathVariable Long id){
+
+        return "page/";
+    }
+
+
+
+
 
 }
