@@ -6,51 +6,51 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-        <a class="navbar-brand" href="">KW SINSA</a>
+            <a class="navbar-brand" href="/">KW SINSA</a>
 
-        <div class="navbar-nav ml-auto">
+            <div class="navbar-nav ml-auto">
 
-                <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
-                <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
-                <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+                    <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
+                    <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
+                    <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+
+            </div>
 
         </div>
+    </nav>
 
-    </div>
-</nav>
+    <table class="table table-horizontal table-bordered">
 
-<table class="table table-horizontal table-bordered">
-
-    <thead>
-        <tr>
-            <th>게시글 내용</th>
-        </tr>
-    </thead>
-
-    <tbody id="tbody">
-        {{#post}}
+        <thead>
             <tr>
-
-                <td>{{content}}</td>
-
-                <form class="form-delete" action="/deletepost/{{id}}" method="POST">
-                    <input type="hidden" name="_method" value="delete">
-                    <button>게시글 삭제</button>
-                </form>
-
-                <form class="form-update" action="/modifyform/{{id}}" method="GET">
-                    <button>게시글 수정</button>
-                </form>
-
-
+                <th>게시글 내용</th>
             </tr>
-        {{/post}}
-    </tbody>
+        </thead>
 
-</table>
+        <tbody id="tbody">
+            {{#post}}
+                <tr>
+
+                    <td>{{content}}</td>
+
+                    <form class="form-delete" action="/deletepost/{{id}}" method="POST">
+                        <input type="hidden" name="_method" value="delete">
+                        <button>게시글 삭제</button>
+                    </form>
+
+                    <form class="form-update" action="/modifyform/{{id}}" method="GET">
+                        <button>게시글 수정</button>
+                    </form>
+
+
+                </tr>
+            {{/post}}
+        </tbody>
+
+    </table>
 
 
 
