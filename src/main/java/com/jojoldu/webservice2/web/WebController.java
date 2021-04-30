@@ -17,7 +17,6 @@ public class WebController{
 
     @GetMapping("")
     public String show_home(Model model){
-        System.out.println("comes here");
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
     }
