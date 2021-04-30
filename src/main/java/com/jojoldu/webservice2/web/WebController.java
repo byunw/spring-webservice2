@@ -84,8 +84,9 @@ public class WebController{
     @PutMapping("/modify/{id}")
     public String show_updatepage(@PathVariable Long id){
 
-        return "page/";
+        return "page/modifypost";
     }
+    
 
 
 
