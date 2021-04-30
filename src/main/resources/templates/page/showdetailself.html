@@ -35,16 +35,17 @@
             <tr>
 
                 <td>{{content}}</td>
+
                 <form class="form-delete" action="/deletepost/{{id}}" method="POST">
                     <input type="hidden" name="_method" value="delete">
                     <button>게시글 삭제</button>
                 </form>
 
-                <form class="form-update" action="/modify/{{id}}" method="POST">
-                    <input type="hidden" name="_method" value="put">
+                <form class="form-update" action="/modifyform/{{id}}" method="GET">
                     <button>게시글 수정</button>
                 </form>
-                
+
+
             </tr>
         {{/post}}
     </tbody>

@@ -81,15 +81,10 @@ public class WebController{
         return "redirect:/";
     }
 
-    @PutMapping("/modify/{id}")
+    @GetMapping("/modifyform/{id}")
     public String show_updatepage(@PathVariable Long id){
-
         return "page/modifypost";
     }
     
-
-
-
-
 
 }
