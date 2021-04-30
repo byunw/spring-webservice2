@@ -96,7 +96,7 @@ public class WebController{
         Posts post=postrepository.getOne(id);
         post.setTitle(title);
         post.setContent(contents);
-        //postrepository.save(post);
+        postrepository.save(post);
         return "redirect:/";
         
 
