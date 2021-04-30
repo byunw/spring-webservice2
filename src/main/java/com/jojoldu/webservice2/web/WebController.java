@@ -82,9 +82,26 @@ public class WebController{
     }
 
     @GetMapping("/modifyform/{id}")
-    public String show_updatepage(@PathVariable Long id){
+    public String show_updatepage(@PathVariable Long id,Model model){
+
+        model.addAttribute("post",postrepository.getOne(id));
         return "page/modifypost";
+
     }
-    
+
+
+    @PutMapping("/updatepost/{id}")
+    public String update_post(@PathVariable Long id,String title,String contents){
+
+        Posts post=postrepository.getOne(id);
+        post.setTitle(title);
+        post.setContent(contents);
+        postrepository.save(post);
+        return "redirect:/";
+
+    }
+
+
+
 
 }
