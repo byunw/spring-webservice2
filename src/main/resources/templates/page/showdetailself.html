@@ -40,11 +40,11 @@
                     <button>게시글 삭제</button>
                 </form>
 
-                <form class="form-update" action="/modify/{{id}}" method="PUT">
-                    <input type="hidden" name="_method" value="delete">
+                <form class="form-update" action="/modify/{{id}}" method="POST">
+                    <input type="hidden" name="_method" value="put">
                     <button>게시글 수정</button>
                 </form>
-
+                
             </tr>
         {{/post}}
     </tbody>
