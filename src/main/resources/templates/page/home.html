@@ -33,15 +33,15 @@
 
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Title</th>
+                    <th>등록시간</th>
+                    <th>제목</th>
                 </tr>
             </thead>
 
             <tbody id="tbody">
                 {{#posts}}
                         <tr>
-                            <td>{{id}}</td>
+                            <td>{{createdDate}}</td>
                             <td><a href="/postdetail/{{id}}">{{title}}</a></td>
                         </tr>
                 {{/posts}}
