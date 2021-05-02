@@ -41,8 +41,17 @@ public class WebController{
 
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
-        postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
-        return "redirect:/";
+        
+        if((!title.equals("")) && (!content.equals(""))){
+            postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
+            return "redirect:/";
+        }
+
+        else{
+            return "page/pleasetypesth";
+        }
+
+
     }
 
     @GetMapping("/postdetail/{id}")
