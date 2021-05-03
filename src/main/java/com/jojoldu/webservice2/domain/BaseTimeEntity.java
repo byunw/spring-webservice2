@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 public abstract class BaseTimeEntity{
 
     //automatically creates date value for create_date column
-    //@CreatedDate
+    @CreatedDate
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDateTime createdDate;
-
+    
     //automatically creates data value for modifiedDate column
-    //@LastModifiedDate
+    @LastModifiedDate
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDateTime modifiedDate;
 
