@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @AllArgsConstructor
@@ -39,18 +41,26 @@ public class WebController{
         return "page/writepostpage";
     }
 
+    //equals() is used to check the value of a variable
+
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
-        
+
         if((!title.equals("")) && (!content.equals(""))){
-            postrepository.save(new Posts(title,content,(User)session.getAttribute("sessioneduser")));
-            return "redirect:/";
+        
+           Posts currentpost=new Posts(title,content,(User)session.getAttribute("sessioneduser"));
+           LocalDate now=LocalDate.now();
+           //now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+           currentpost.setCreatedDate(now);
+           currentpost.setModifiedDate(now);
+           postrepository.save(currentpost);
+           return "redirect:/";
+
         }
 
         else{
             return "page/pleasetypesth";
         }
-
 
     }
 

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,11 +27,17 @@ public class Posts extends BaseTimeEntity{
     @ManyToOne
     @JoinColumn(name="author_id")
     private User author;
-    
-    public Posts(String title,String content,User author){
+
+    //private LocalDate createdDate;
+
+    //private LocalDate modifiedDate;
+
+    //constructor
+    public Posts(String title, String content, User author){
         this.title=title;
         this.content=content;
         this.author=author;
     }
+
 
 }
