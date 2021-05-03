@@ -102,7 +102,7 @@ public class WebController{
     }
 
     @PutMapping("/updatepost/{id}")
-    public String update_post(@PathVariable Long id,String title,String contents){
+    public String update_post(@PathVariable Long id,String title,String contents,Model model){
 
         if((!title.equals("")) && (!contents.equals(""))){
             Posts post=postrepository.getOne(id);
@@ -111,9 +111,9 @@ public class WebController{
             postrepository.save(post);
             return "redirect:/";
         }
-
+        
+        model.addAttribute("post",postrepository.getOne(id));
         return "page/fillbothfields";
-
 
     }
 
