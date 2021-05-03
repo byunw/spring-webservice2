@@ -15,12 +15,11 @@ public abstract class BaseTimeEntity{
 
     //automatically creates date value for create_date column
     @CreatedDate
-    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDateTime createdDate;
+
     
     //automatically creates data value for modifiedDate column
     @LastModifiedDate
-    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDateTime modifiedDate;
 
 
