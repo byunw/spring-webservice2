@@ -22,10 +22,10 @@ public class WebController{
         return "page/home";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deletepost(@PathVariable Long id){
+    @DeleteMapping("/deletepost/{id}")
+    public String delete_post(@PathVariable Long id){
         postrepository.deleteById(id);
-        return "deleteresultpage";
+        return "redirect:/";
     }
 
     @GetMapping("/writepost")
@@ -41,7 +41,6 @@ public class WebController{
     }
 
     //equals() is used to check the value of a variable
-
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
 
@@ -89,12 +88,6 @@ public class WebController{
 
     }
 
-    @DeleteMapping("/deletepost/{id}")
-    public String delete_post(@PathVariable Long id){
-        postrepository.deleteById(id);
-        return "redirect:/";
-    }
-
     @GetMapping("/modifyform/{id}")
     public String show_updatepage(@PathVariable Long id,Model model){
         model.addAttribute("post",postrepository.getOne(id));
@@ -108,10 +101,13 @@ public class WebController{
             Posts post=postrepository.getOne(id);
             post.setTitle(title);
             post.setContent(contents);
+            //updating the modified_date of the posts object representing the current post being updated
+            post.setModifiedDate(LocalDate.now());
             postrepository.save(post);
             return "redirect:/";
+            
         }
-        
+
         model.addAttribute("post",postrepository.getOne(id));
         return "page/fillbothfields";
 
