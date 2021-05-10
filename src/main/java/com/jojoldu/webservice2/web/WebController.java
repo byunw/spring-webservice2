@@ -44,15 +44,14 @@ public class WebController{
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
 
+        //게시글 작성 페이지에 제목값이랑 내용값이 둘다있을경우
         if((!title.equals("")) && (!content.equals(""))){
-
            Posts currentpost=new Posts(title,content,(User)session.getAttribute("sessioneduser"));
            LocalDate now=LocalDate.now();
            currentpost.setCreatedDate(now);
            currentpost.setModifiedDate(now);
            postrepository.save(currentpost);
            return "redirect:/";
-
         }
 
         else{
@@ -80,8 +79,9 @@ public class WebController{
                 return "page/showdetailself";
             }
 
+            //로그인한 상태에서 남에 글을 상세보기 눌렀을경우
             else{
-                return "page/deleteotherpost";
+                return "page/showdetail";
             }
 
         }
@@ -97,7 +97,9 @@ public class WebController{
     @PutMapping("/updatepost/{id}")
     public String update_post(@PathVariable Long id,String title,String contents,Model model){
 
+        //수정할때 제목이랑 게시글내용 둘다 채웠을 경우
         if((!title.equals("")) && (!contents.equals(""))){
+
             Posts post=postrepository.getOne(id);
             post.setTitle(title);
             post.setContent(contents);
@@ -105,7 +107,7 @@ public class WebController{
             post.setModifiedDate(LocalDate.now());
             postrepository.save(post);
             return "redirect:/";
-            
+
         }
 
         model.addAttribute("post",postrepository.getOne(id));
