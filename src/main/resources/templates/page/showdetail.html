@@ -40,6 +40,7 @@
     </table>
 
     <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+    <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;" >댓글 등록</button>
 
     <script>
         function toggle(){
@@ -49,6 +50,9 @@
             if(comment_box.style.display==='none'){
                 comment_box.style.display='block';
             }
+            
+            var comment_button=document.getElementById('postbutton');
+            comment_button.style.display='block';
 
         }
     </script>
