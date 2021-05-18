@@ -13,7 +13,6 @@ public class WebRestController{
 
     @PostMapping("/update/{content}")
     public String update_field(@PathVariable String content){
-
         Posts post=postrepository.findByContent(content);
         post.setContent("chicken");
         postrepository.save(post);
@@ -31,9 +30,10 @@ public class WebRestController{
     public String hello(){
         return "hello!";
     }
-
-
-
-
+    
+    @GetMapping("/test")
+    public String show(){
+        return "page/test";
+    }
 
 }
