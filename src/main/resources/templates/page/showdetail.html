@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="">KW SINSA</a>
 
             <div class="navbar-nav ml-auto">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
+                    <button onclick="toggle()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
                     <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
                     <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
             </div>
@@ -39,8 +39,19 @@
 
     </table>
 
-    <textarea name="content" rows="5" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+    <textarea id="comment" name="content" rows="5" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+    
+    <script>
+        function toggle(){
 
+            var comment_box=document.getElementById('comment');
+
+            if(comment_box.style.display==='none'){
+                comment_box.style.display='block';
+            }
+
+        }
+    </script>
 
 
 </body>
