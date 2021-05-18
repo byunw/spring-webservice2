@@ -30,10 +30,7 @@ public class WebRestController{
     public String hello(){
         return "hello!";
     }
+
     
-    @GetMapping("/test")
-    public String show(){
-        return "page/test";
-    }
 
 }

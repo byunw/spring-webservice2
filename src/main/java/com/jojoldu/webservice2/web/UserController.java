@@ -77,7 +77,10 @@ public class UserController{
 
     }
 
-    
+    @GetMapping("/test")
+    public String show(){
+        return "page/test";
+    }
 
 
 }
