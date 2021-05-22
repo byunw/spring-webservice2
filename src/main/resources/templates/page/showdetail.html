@@ -7,7 +7,6 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
             <a class="navbar-brand" href="">KW SINSA</a>
@@ -31,32 +30,35 @@
 
         <tbody id="tbody">
             {{#post}}
-                <tr>
+
+                <tr>    
                     <td>{{content}}</td>
                 </tr>
+
+                <form autocomplete="off" action="/savecomment/{{id}}" method="post">
+                    <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+                    <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;">댓글 등록</button>
+                </form>
+
             {{/post}}
         </tbody>
 
     </table>
 
-    <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
-    <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;" >댓글 등록</button>
+
 
     <script>
         function toggle(){
-
             var comment_box=document.getElementById('comment');
 
             if(comment_box.style.display==='none'){
                 comment_box.style.display='block';
             }
-            
+
             var comment_button=document.getElementById('postbutton');
             comment_button.style.display='block';
-
         }
     </script>
-
 
 </body>
 

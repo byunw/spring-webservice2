@@ -1,5 +1,7 @@
 package com.jojoldu.webservice2.web;
 
+import com.jojoldu.webservice2.domain.Comment.Comment;
+import com.jojoldu.webservice2.domain.Comment.CommentRepository;
 import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.posts.Posts;
 import com.jojoldu.webservice2.domain.posts.PostsRepository;
@@ -15,6 +17,8 @@ import java.time.LocalDate;
 public class WebController{
 
     private PostsRepository postrepository;
+    private CommentRepository commentrepository;
+
 
     @GetMapping("")
     public String show_home(Model model){
@@ -36,7 +40,7 @@ public class WebController{
         if(sessionedUser==null){
             return "page/loginpage";
         }
-
+        
         return "page/writepostpage";
     }
 
@@ -60,6 +64,12 @@ public class WebController{
 
     }
 
+    @PostMapping("/savecomment/{id}")
+    public String save_comment(@PathVariable Long id,String content){
+        commentrepository.save(new Comment(content,postrepository.getOne(id)));
+        return "redirect:/";
+    }
+
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
 
@@ -67,6 +77,7 @@ public class WebController{
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
 
+        //로그인 아닌 상태
         if(loginuser==null){
             return "page/showdetail_notlogin";
         }
@@ -75,11 +86,12 @@ public class WebController{
 
             User User_Object=(User) loginuser;
 
+            //로그인 한 상태에서 자신이 작성한 글 상세보기 눌렀을 경우
             if(post.getAuthor().getUserId().equals(User_Object.getUserId())){
                 return "page/showdetailself";
             }
 
-            //로그인한 상태에서 남에 글을 상세보기 눌렀을경우
+            //로그인한상태에서 남에 글 상세보기 눌렀을경우
             else{
                 return "page/showdetail";
             }
