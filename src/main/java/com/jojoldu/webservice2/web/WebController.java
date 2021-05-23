@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
+
 @Controller
 @AllArgsConstructor
 public class WebController{
 
     private PostsRepository postrepository;
     private CommentRepository commentrepository;
-
 
     @GetMapping("")
     public String show_home(Model model){
@@ -40,7 +40,7 @@ public class WebController{
         if(sessionedUser==null){
             return "page/loginpage";
         }
-        
+
         return "page/writepostpage";
     }
 
@@ -65,9 +65,13 @@ public class WebController{
     }
 
     @PostMapping("/savecomment/{id}")
-    public String save_comment(@PathVariable Long id,String content){
+    public String save_comment(@PathVariable Long id,String content,Model model){
+
+        //db(comment table)에 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
-        return "redirect:/";
+        model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+        return "page/showcomment";
+
     }
 
     @GetMapping("/postdetail/{id}")
