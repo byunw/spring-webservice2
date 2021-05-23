@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <link href="/css/lib/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="">KW SINSA</a>
+        <div class="navbar-nav ml-auto">
+            <button onclick="toggle()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
+            <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
+            <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+        </div>
+    </div>
+</nav>
+
+<table class="table table-horizontal table-bordered">
+
+    <thead>
+    <tr>
+        <th>게시글 내용</th>
+    </tr>
+    </thead>
+
+    <tbody id="tbody">
+        {{#post}}
+
+            <tr>
+                <td>{{content}}</td>
+            </tr>
+
+        {{/post}}
+    </tbody>
+
+</table>
+
+<!-- 해당 게시글의 모든 댓글을 보여주는 하는 html -->
+
+{{#comments}}
+    <tr>
+        {{content}}
+    </tr>
+{{/comments}}
+
+<script>
+    function toggle(){
+
+        var comment_box=document.getElementById('comment');
+
+        if(comment_box.style.display==='none'){
+            comment_box.style.display='block';
+        }
+
+        var comment_button=document.getElementById('postbutton');
+        comment_button.style.display='block';
+
+    }
+</script>
+
+</body>
+
+</html>
+
+
+
+
