@@ -7,7 +7,10 @@ import java.util.stream.Stream;
 
 public interface CommentRepository extends JpaRepository<Comment,Long>{
 
-    @Query("SELECT * from comment where post_id = :id")
+    //jpql syntax 틀린거같음
+
+    @Query("SELECT c FROM Comment c where c.post_id = :id")
     Stream<Comment> findAllCommentforeachpost(@Param("id") Long id);
-    
+
+
 }
