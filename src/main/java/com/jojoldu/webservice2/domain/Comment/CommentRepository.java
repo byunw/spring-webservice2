@@ -8,8 +8,9 @@ import java.util.stream.Stream;
 public interface CommentRepository extends JpaRepository<Comment,Long>{
 
     //jpql syntax 틀린거같음
+    //join 사용해야되나?
 
-    @Query("SELECT c FROM Comment c where c.post_id = :id")
+    @Query(value= "select c FROM Comment c where c.toppost= :id")
     Stream<Comment> findAllCommentforeachpost(@Param("id") Long id);
 
 
