@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment,Long>{
 
-    //문제는 line 11,12번째에있음
-    //    @Query(value="SELECT c FROM Comment c where c.toppost= id%")
-    //    List<Object[]> findAllCommentforeachpost(@Param("id") Long id);
+        @Query(value="SELECT c FROM Comment c where c.toppost= :id")
+        List<Comment> findAllCommentforeachpost(@Param("id") Long id);
 
 }
