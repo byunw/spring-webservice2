@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment,Long>{
 
-        @Query(value="SELECT c FROM Comment c where c.toppost= :id")
+        @Query(value="SELECT c FROM Comment c where c.post_id= :id")
         List<Comment> findAllCommentforeachpost(@Param("id") Long id);
-
+        
 }
