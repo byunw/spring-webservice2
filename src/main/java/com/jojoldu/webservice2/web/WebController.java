@@ -68,11 +68,12 @@ public class WebController{
     @PostMapping("/savecomment/{id}")
     @Transactional
     public String save_comment(@PathVariable Long id,String content,Model model){
-
+        
         //db(comment table)에 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
-        model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+        //model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
         return "page/showcomment";
+
 
     }
 
