@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 
@@ -65,6 +66,7 @@ public class WebController{
     }
 
     @PostMapping("/savecomment/{id}")
+    @Transactional
     public String save_comment(@PathVariable Long id,String content,Model model){
 
         //db(comment table)에 저장
