@@ -1,10 +1,11 @@
 package com.jojoldu.webservice2.domain.Comment;
 
 import com.jojoldu.webservice2.domain.posts.Posts;
-
+import lombok.AllArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
 public class Comment{
 
     @Id
@@ -17,11 +18,12 @@ public class Comment{
     @ManyToOne
     @JoinColumn(name="post_id")
     private Posts toppost;
-    
+
     //constructor
     public Comment(String content,Posts toppost){
         this.content=content;
         this.toppost=toppost;
     }
+
 
 }
