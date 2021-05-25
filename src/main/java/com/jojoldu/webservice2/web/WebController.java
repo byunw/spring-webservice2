@@ -19,8 +19,6 @@ import java.time.LocalDate;
 public class WebController{
 
     private PostsRepository postrepository;
-
-    @Autowired
     private CommentRepository commentrepository;
 
     @GetMapping("")
@@ -68,9 +66,8 @@ public class WebController{
     }
 
     @PostMapping("/savecomment/{id}")
-    @Transactional
     public String save_comment(@PathVariable Long id,String content,Model model){
-
+        
         //db(comment table)에 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
