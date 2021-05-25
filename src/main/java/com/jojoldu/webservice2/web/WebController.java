@@ -67,13 +67,12 @@ public class WebController{
 
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
-        //                                       14003      "aa"
+        //                                       14003      "cc"
         //comment table에 댓글 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
         //commentrepository.findAllCommentforeachpost(id) returns a list containing Comment objects whose post_id value is same as id value
-        System.out.println(commentrepository.findAllCommentforeachpost(id));
-        return "redirect:/";
+        return "page/showcomment";
 
     }
 
