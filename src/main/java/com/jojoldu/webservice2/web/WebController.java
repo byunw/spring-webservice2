@@ -73,7 +73,6 @@ public class WebController{
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
 
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
-        System.out.println(commentrepository.findAllCommentforeachpost(id));
         return "redirect:/";
 
     }
