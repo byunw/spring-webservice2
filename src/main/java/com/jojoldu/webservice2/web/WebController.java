@@ -65,14 +65,15 @@ public class WebController{
 
     }
 
-    @Transactional
+
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
-        //                                   14003          "ss"
-        //comment table에 댓글 저장 저장
+        //                                   14003          "..."
+
+        //comment table에 댓글 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
 
-        model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+        model.addAttribute("comments",commentrepository.findAllCommentforeachpost(14003L ));
         return "redirect:/";
 
     }
