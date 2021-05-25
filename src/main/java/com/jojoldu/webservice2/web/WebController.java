@@ -64,7 +64,8 @@ public class WebController{
         }
 
     }
-    
+
+    @Transactional
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
         //                                   14003          "ss"
