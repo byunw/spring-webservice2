@@ -71,7 +71,6 @@ public class WebController{
 
         //comment table에 댓글 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
-
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
         return "redirect:/";
 
