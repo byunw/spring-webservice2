@@ -1,65 +1,65 @@
 <html>
 
-<head>
-    <link href="/css/lib/bootstrap.min.css" rel="stylesheet">
-</head>
+    <head>
+        <link href="/css/lib/bootstrap.min.css" rel="stylesheet">
+    </head>
 
-<body>
+    <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="">KW SINSA</a>
-            <div class="navbar-nav ml-auto">
-                    <button onclick="toggle()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
-                    <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
-                    <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="">KW SINSA</a>
+                <div class="navbar-nav ml-auto">
+                        <button onclick="toggle()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
+                        <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
+                        <a href="/writepost"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">게시글 작성</button></a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <table class="table table-horizontal table-bordered">
+        <table class="table table-horizontal table-bordered">
 
-        <thead>
-            <tr>
-                <th>게시글 내용</th>
-            </tr>
-        </thead>
-
-        <tbody id="tbody">
-            {{#post}}
-
+            <thead>
                 <tr>
-                    <td>{{content}}</td>
+                    <th>게시글 내용</th>
                 </tr>
+            </thead>
 
-            {{/post}}
-        </tbody>
+            <tbody id="tbody">
+                {{#post}}
 
-    </table>
+                    <tr>
+                        <td>{{content}}</td>
+                    </tr>
 
-    
-    {{#post}}
-        <form autocomplete="off" action="/savecomment/{{id}}" method="post">
-            <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
-            <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;">댓글 등록</button>
-        </form>
-    {{/post}}
+                {{/post}}
+            </tbody>
 
+        </table>
 
-    <script>
-        function toggle(){
-            var comment_box=document.getElementById('comment');
+        {{#post}}
+            <form autocomplete="off" action="/savecomment/{{id}}" method="post">
+                <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+                <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;">댓글 등록</button>
+            </form>
+        {{/post}}
 
-            if(comment_box.style.display==='none'){
-                comment_box.style.display='block';
+        <script>
+            function toggle(){
+
+                var comment_box=document.getElementById('comment');
+
+                if(comment_box.style.display==='none'){
+                    comment_box.style.display='block';
+                }
+
+                var comment_button=document.getElementById('postbutton');
+                comment_button.style.display='block';
+
             }
+        </script>
 
-            var comment_button=document.getElementById('postbutton');
-            comment_button.style.display='block';
-        }
-    </script>
-
-</body>
+    </body>
 
 </html>
 
