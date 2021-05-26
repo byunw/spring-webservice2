@@ -6,11 +6,9 @@ import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.posts.Posts;
 import com.jojoldu.webservice2.domain.posts.PostsRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
@@ -64,7 +62,7 @@ public class WebController{
         }
 
     }
-    
+
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
         //                                       14003      "cc"
@@ -102,6 +100,8 @@ public class WebController{
 
             //로그인한상태에서 남에 글 상세보기 눌렀을경우
             else{
+                
+                model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
                 return "page/showdetail";
             }
 

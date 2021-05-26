@@ -37,6 +37,15 @@
 
         </table>
 
+        <tbody id="tbody2">
+            {{#comments}}
+                <tr>
+                    <td><a href="">{{content}}</a></td>
+                </tr>
+            {{/comments}}
+        </tbody>
+
+
         {{#post}}
             <form autocomplete="off" action="/savecomment/{{id}}" method="post">
                 <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
