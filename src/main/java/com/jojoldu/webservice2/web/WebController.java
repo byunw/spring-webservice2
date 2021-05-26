@@ -64,12 +64,15 @@ public class WebController{
         }
 
     }
-
+    
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
         //                                       14003      "cc"
         //comment table에 댓글 저장
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
+
+        //현재 게시글을 의미하는 post object를 value로 model에 post: post object식으로 넣어줌
+        model.addAttribute("post",postrepository.getOne(id));
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
         //commentrepository.findAllCommentforeachpost(id) returns a list containing Comment objects whose post_id value is same as id value
         return "page/showcomment";

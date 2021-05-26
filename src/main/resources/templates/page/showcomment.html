@@ -20,18 +20,16 @@
 <table class="table table-horizontal table-bordered">
 
     <thead>
-    <tr>
-        <th>게시글 내용</th>
-    </tr>
+        <tr>
+            <th>게시글 내용</th>
+        </tr>
     </thead>
 
     <tbody id="tbody">
         {{#post}}
-
             <tr>
                 <td>{{content}}</td>
             </tr>
-
         {{/post}}
     </tbody>
 
@@ -46,6 +44,7 @@
 {{/comments}}
 
 <script>
+
     function toggle(){
 
         var comment_box=document.getElementById('comment');
@@ -58,6 +57,7 @@
         comment_button.style.display='block';
 
     }
+
 </script>
 
 </body>
