@@ -37,14 +37,18 @@
 
         </table>
 
-        <tbody id="tbody2">
-            {{#comments}}
-                <tr>
-                    <td><a href="">{{content}}</a></td>
-                </tr>
-            {{/comments}}
-        </tbody>
+        <table>
+            <tbody id="tbody2">
 
+                {{#comments}}
+                    <tr>
+                        <td><a href="">{{content}}</a></td>
+                    </tr>
+                {{/comments}}
+
+            </tbody>
+        </table>
+        
 
         {{#post}}
             <form autocomplete="off" action="/savecomment/{{id}}" method="post">
@@ -52,6 +56,7 @@
                 <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;">댓글 등록</button>
             </form>
         {{/post}}
+
 
         <script>
             function toggle(){
