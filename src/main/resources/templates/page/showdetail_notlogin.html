@@ -1,10 +1,7 @@
 <html>
 
 <head>
-
-    <!-- bootstrap css 파일과 연동 -->
     <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
-
 </head>
 
 <body>
@@ -12,19 +9,20 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
             <a class="navbar-brand" href="/">KW SINSA</a>
 
             <div class="navbar-nav ml-auto">
-
                 <!--<button onclick="modal_popup()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>-->
                 <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#postcomment">댓글 달기</button>
                 <a href="/loginpage"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button></a>
                 <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
-
             </div>
+
         </div>
     </nav>
 
+    <!-- modal -->
     <div id="postcomment" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -38,7 +36,6 @@
                     <p>로그인하시고 댓글등록 부탁드립니다!</p>
                 </div>
                 <div class="modal-footer">
-<!--                    <button type="button" class="btn btn-primary">확인</button>-->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">확인</span>
                     </button>
@@ -64,6 +61,22 @@
         </tbody>
 
     </table>
+
+    
+    <table>
+
+        <tbody id="tbody2">
+            {{#comments}}
+                <tr>
+                    <td><a href="">{{content}}</a></td>
+                </tr>
+            {{/comments}}
+        </tbody>
+
+    </table>
+
+
+
 
     <!--bootstrap js,jquery 연동  -->
     <script src="/js/lib/jquery.min.js"></script>

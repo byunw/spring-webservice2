@@ -84,11 +84,13 @@ public class WebController{
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
 
-        //로그인 아닌 상태
+        //로그인 안한 상태
         if(loginuser==null){
+            model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
             return "page/showdetail_notlogin";
         }
 
+        //로그인 상태
         else{
 
             User User_Object=(User) loginuser;
@@ -100,7 +102,6 @@ public class WebController{
 
             //로그인한상태에서 남에 글 상세보기 눌렀을경우
             else{
-                
                 model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
                 return "page/showdetail";
             }
