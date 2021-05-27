@@ -36,13 +36,15 @@
 </table>
 
 <!-- 해당 게시글의 모든 댓글을 보여주는 하는 html -->
-<tbody id="tbody2">
-    {{#comments}}
-        <tr>
-            <td>{{content}}</td>
-        </tr>
-    {{/comments}}
-</tbody>
+<table>
+    <tbody id="tbody2">
+        {{#comments}}
+            <tr>
+                <td>{{content}}</td>
+            </tr>
+        {{/comments}}
+    </tbody>
+</table>
 
 <script>
 
