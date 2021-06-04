@@ -8,7 +8,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="">KW SINSA</a>
+                <a class="navbar-brand" href="/">KW SINSA</a>
                 <div class="navbar-nav ml-auto">
                         <button onclick="toggle()" class="btn btn-outline-success my-2 my-sm-0" type="submit">댓글 달기</button>
                         <a href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그아웃</button></a>
@@ -48,7 +48,7 @@
 
             </tbody>
         </table>
-        
+
 
         {{#post}}
             <form autocomplete="off" action="/savecomment/{{id}}" method="post">
