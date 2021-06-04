@@ -80,7 +80,6 @@ public class WebController{
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
         
-        System.out.println(postrepository.getOne(id));
         model.addAttribute("post",postrepository.getOne(id));
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
