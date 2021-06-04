@@ -49,12 +49,14 @@ public class WebController{
 
         //게시글 작성 페이지에 제목값이랑 내용값이 둘다있을경우
         if((!title.equals("")) && (!content.equals(""))){
+
            Posts currentpost=new Posts(title,content,(User)session.getAttribute("sessioneduser"));
            LocalDate now=LocalDate.now();
            currentpost.setCreatedDate(now);
            currentpost.setModifiedDate(now);
            postrepository.save(currentpost);
            return "redirect:/";
+
         }
 
         else{
@@ -65,10 +67,8 @@ public class WebController{
 
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
-        //                                       14003      "cc"
-        //comment table에 댓글 저장
-        commentrepository.save(new Comment(content,postrepository.getOne(id)));
 
+        commentrepository.save(new Comment(content,postrepository.getOne(id)));
         //현재 게시글을 의미하는 post object를 value로 model에 post: post object식으로 넣어줌
         model.addAttribute("post",postrepository.getOne(id));
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
@@ -79,7 +79,8 @@ public class WebController{
 
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
-
+        
+        System.out.println(postrepository.getOne(id));
         model.addAttribute("post",postrepository.getOne(id));
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
@@ -97,6 +98,7 @@ public class WebController{
 
             //로그인 한 상태에서 자신이 작성한 글 상세보기 눌렀을 경우
             if(post.getAuthor().getUserId().equals(User_Object.getUserId())){
+                model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
                 return "page/showdetailself";
             }
 
