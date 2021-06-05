@@ -27,10 +27,13 @@ public class WebController{
 
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
+        System.out.println(2);
+        //problem lies in line 32
         postrepository.deleteById(id);
+        System.out.println(3);
         return "redirect:/";
     }
-
+    
     @GetMapping("/writepost")
     public String write_post(HttpSession session){
 
@@ -79,7 +82,7 @@ public class WebController{
 
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
-        
+
         model.addAttribute("post",postrepository.getOne(id));
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
