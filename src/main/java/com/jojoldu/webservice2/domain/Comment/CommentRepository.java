@@ -13,8 +13,8 @@ public interface CommentRepository extends JpaRepository<Comment,Long>{
         @Query("select c FROM Comment c where c.toppost.id = :id")
         List<Comment> findAllCommentforeachpost(@Param("id") Long id);
 
-        //직접 쿼리작성
-        @Query("delete c FROM Comment c where c.toppost.id= :id")
-        void deleteassociatedcomment(@Param("id") Long id);
-
+        //직접 single JPQL query against the database
+        @Query("delete from Comment c where c.toppost.id= :id")
+        void DeleteAssociatedComment(@Param("id") Long id);
+                
 }
