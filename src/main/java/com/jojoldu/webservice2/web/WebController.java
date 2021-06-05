@@ -24,16 +24,18 @@ public class WebController{
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
     }
-
+    
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-        System.out.println(2);
-        //problem lies in line 32
+
+        //code that deletes associated comment entities in comment table
+        commentrepository.deleteassociatedcomment(id);
         postrepository.deleteById(id);
-        System.out.println(3);
         return "redirect:/";
+
+
     }
-    
+
     @GetMapping("/writepost")
     public String write_post(HttpSession session){
 
