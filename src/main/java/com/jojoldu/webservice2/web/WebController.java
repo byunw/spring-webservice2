@@ -24,12 +24,12 @@ public class WebController{
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
     }
-    
+
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
 
         //code that deletes associated comment entities in comment table
-        commentrepository.deleteassociatedcomment(id);
+        commentrepository.DeleteAssociatedComment(id);
         postrepository.deleteById(id);
         return "redirect:/";
 
