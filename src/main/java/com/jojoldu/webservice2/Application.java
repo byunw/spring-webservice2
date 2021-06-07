@@ -26,9 +26,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 //이 프로젝트(spring-webservice2)의 springboot version(2.4.4 (이 버전 숫자는 build.gradle에 나와있고 리눅스 원격서버에서 jar file 실행시키면 나옴 2.4.4라고 ))이 1.2 이상이여서 @SpringBootApplication 사용가능한거임
 //프로젝트 스프링부트버전이 1.2미만이면 @SpringBootApplication 사용못하고 대신 @Configuration,@ComponentScan, @EnableAutoConfiguration 사용해야됨 필요하다면
+@SpringBootApplication
 @EnableJpaAuditing//JPA auditing을 활성화 하는것. JPA auditing;//side note, CrudRepository is the interface for generic CRUD operations
 public class Application{ //class Application is the entry point
-    
+
     //when the java interpreter executes an application, it starts by calling the class's main method, which then calls all the other methods
     public static void main(String[] args){//every Java application must contain a main method
                                                //public indicates that the main method can be called from anywhere
