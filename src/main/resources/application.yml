@@ -12,11 +12,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto:
+
   mvc:
     hiddenmethod:
       filter:
         enabled: true
+
 
 
 
