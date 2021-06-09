@@ -1,19 +1,17 @@
 package com.jojoldu.webservice2.domain.Comment;
 
 import com.jojoldu.webservice2.domain.posts.Posts;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
 public class Comment{
-    
-    @Id
-    @GeneratedValue
-    private Long id;
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    
     @Column(nullable=false)
     private String content;
 
