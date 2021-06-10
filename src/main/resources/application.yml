@@ -13,12 +13,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-      
 
   mvc:
     hiddenmethod:
       filter:
         enabled: true
+        
+server:
+  port: 80
+
 
 
 
