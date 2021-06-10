@@ -4,13 +4,13 @@ buildscript{
         springBootVersion='2.1.1.RELEASE'
     }
 
-    dependencies {
+    dependencies{
         classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
     }
 
 }
 
-plugins {
+plugins{
     id 'org.springframework.boot' version '2.4.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
@@ -38,6 +38,7 @@ dependencies{
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     compile 'org.springframework.boot:spring-boot-starter-mustache'
+    compile 'org.springframework.boot:spring-boot-starter-tomcat'
     compile 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
