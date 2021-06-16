@@ -27,12 +27,10 @@ public class WebController{
 
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-
-        //code that deletes associated comment entities in comment table
+        
         commentrepository.DeleteAssociatedComment(id);
         postrepository.deleteById(id);
         return "redirect:/";
-
 
     }
 
@@ -47,6 +45,7 @@ public class WebController{
 
         return "page/writepostpage";
     }
+
 
     //equals() is used to check the value of a variable
     @PostMapping("/savepost")
@@ -140,6 +139,7 @@ public class WebController{
 
         model.addAttribute("post",postrepository.getOne(id));
         return "page/fillbothfields";
+
 
     }
 
