@@ -12,14 +12,28 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
+//@Controller is indicating that WebController class serves the role of a controller
+//@AllArgsConstructor generates a constructor with parameter for each field in the class
+    //example
+        //@AllArgsConstructor
+        //public class Person{
+        //      private String firstname;
+        //      private String lastname;
+        //}
+        //constructor generated b/c of @AllArgsContructor
+        //public Person(String firstname,String lastname){
+        //      this.firstname=firstname;
+        //      this.lastname=lastname;
+        //}
+//since WebController class is Controller class and not have fields this class should not use @AllArgsConstructor
 @Controller
-@AllArgsConstructor
 public class WebController{
+    
 
     private PostsRepository postrepository;
     private CommentRepository commentrepository;
 
-    @GetMapping("")
+    @GetMapping("")//@GetMapping is same as @RequestMapping(method=RequestMethod.GET)
     public String show_home(Model model){
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
@@ -27,7 +41,7 @@ public class WebController{
 
     @DeleteMapping("/deletepost/{id}")
     public String delete_post(@PathVariable Long id){
-        
+
         commentrepository.DeleteAssociatedComment(id);
         postrepository.deleteById(id);
         return "redirect:/";
