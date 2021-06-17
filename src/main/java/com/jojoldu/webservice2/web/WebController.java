@@ -25,13 +25,15 @@ import java.time.LocalDate;
         //      this.firstname=firstname;
         //      this.lastname=lastname;
         //}
+
 //since WebController class is Controller class and not have fields this class should not use @AllArgsConstructor
 @Controller
+@AllArgsConstructor
 public class WebController{
     
-
     private PostsRepository postrepository;
     private CommentRepository commentrepository;
+
 
     @GetMapping("")//@GetMapping is same as @RequestMapping(method=RequestMethod.GET)
     public String show_home(Model model){
