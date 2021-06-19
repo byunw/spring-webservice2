@@ -20,7 +20,7 @@ spring:
         enabled: true
   logging:
     level:
-      org.springframework.web: DEBUG
+      org.springframework.web: debug
 
 server:
   port: 80
