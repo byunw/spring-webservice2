@@ -18,7 +18,8 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
-  logging:
+
+logging:
     level:
       org.springframework.web: debug
 
