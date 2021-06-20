@@ -4,12 +4,6 @@ spring:
     suffix: .html
     expose-session-attributes: true
 
-  datasource:
-    url: jdbc:mariadb://database-2.ccw4mmoyfzrt.ap-northeast-2.rds.amazonaws.com:3306/kwsinsa
-    username: alex1461
-    password: Alex33942540!
-    driver-class-name: org.mariadb.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -23,6 +17,8 @@ logging:
     level:
       org.springframework.web: debug
 
+server:
+  port: 80
 
 
 
