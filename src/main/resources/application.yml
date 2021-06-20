@@ -23,8 +23,6 @@ logging:
     level:
       org.springframework.web: debug
 
-server:
-  port: 80
 
 
 
