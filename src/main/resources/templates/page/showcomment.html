@@ -46,6 +46,13 @@
     </tbody>
 </table>
 
+{{#post}}
+    <form autocomplete="off" action="/savecomment/{{id}}" method="post">
+        <textarea id="comment" name="content" rows="3" cols="50" class="form-control" placeholder="여기에다가 작성해주세요!" style="display:none;"></textarea>
+        <button id="postbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit" style="display:none;">댓글 등록</button>
+    </form>
+{{/post}}
+
 <script>
 
     function toggle(){
