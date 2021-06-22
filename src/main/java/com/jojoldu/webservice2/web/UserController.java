@@ -24,13 +24,13 @@ public class UserController{
             if((!user.getUserId().equals("")) &&  (!user.getName().equals("")) && (!user.getPassword().equals("")) &&
                     (!user.getPassword2().equals("")) && (user.getPassword().equals(user.getPassword2()))){
                 usersRepository.save(user);
+                return "redirect:/";
 
             }
 
             else{
                 return "page/registerfail";
             }
-
 
         }
 
@@ -39,8 +39,10 @@ public class UserController{
         catch (Exception e){
             return "page/trydifferentid";
         }
+        
+        //original position
+        //return "redirect:/";
 
-        return "redirect:/";
 
     }
 
