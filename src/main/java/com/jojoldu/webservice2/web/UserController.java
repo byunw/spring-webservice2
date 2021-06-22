@@ -19,12 +19,23 @@ public class UserController{
     public String create_save(User user){
 
         try{
-            usersRepository.save(user);
+
+            //check if the user has typed all information and the first password and the second password are equal
+            if((!user.getUserId().equals("")) &&  (!user.getName().equals("")) && (!user.getPassword().equals("")) &&
+                    (!user.getPassword2().equals("")) && (user.getPassword().equals(user.getPassword2()))){
+                usersRepository.save(user);
+
+            }
+
+            else{
+                return "page/registerfail";
+            }
+
+
         }
 
-        //이미 다른사람이 사용한 사용자아이디로 회원가입하려면 에러뜰고
-        //catch부분안에있는 return "page/trydifferentid"이 실행이됨
-
+        //이미 다른사람이 사용한 사용자아이디로 회원가입하려면 에러뜨고
+        //catch부분안에있는  page/trydifferentid.html이 전송됨
         catch (Exception e){
             return "page/trydifferentid";
         }
