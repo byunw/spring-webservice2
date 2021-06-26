@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Setter
 public class Posts extends BaseTimeEntity{
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +23,17 @@ public class Posts extends BaseTimeEntity{
     @Column(columnDefinition="TEXT",nullable=false)
     private String content;
 
+    @Column(name="comment_number")
+    private int comment_number=0;
+    
+    //JPA annotation
     @ManyToOne
     @JoinColumn(name="author_id")
     private User author;
 
+
+    //fields LocalDate createdDate and LocalDate modifiedDate exist b/c the current class
+    //is inheriting BaseTimeEntity
     //private LocalDate createdDate;
     //private LocalDate modifiedDate;
 
