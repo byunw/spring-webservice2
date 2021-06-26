@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
-
 //@Controller is indicating that WebController class serves the role of a controller
 //@AllArgsConstructor generates a constructor with parameter for each field in the class
     //example
@@ -41,6 +40,7 @@ public class WebController{
     public String show_home(Model model){
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
+
     }
 
     @DeleteMapping("/deletepost/{id}")
@@ -63,7 +63,6 @@ public class WebController{
 
         return "page/writepostpage";
     }
-
 
     //equals() is used to check the value of a variable
     @PostMapping("/savepost")
@@ -91,13 +90,37 @@ public class WebController{
     public String save_comment(@PathVariable Long id,String content,Model model){
 
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
-        //현재 게시글을 의미하는 post object를 value로 model에 post: post object식으로 넣어줌
         model.addAttribute("post",postrepository.getOne(id));
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
-        //commentrepository.findAllCommentforeachpost(id) returns a list containing Comment objects whose post_id value is same as id value
+        Posts post=postrepository.getOne(id);
+        post.setComment_number(post.getComment_number()+1);
+        postrepository.save(post);
         return "page/showcomment";
+        
+    }
+
+    @PutMapping("/updatepost/{id}")
+    public String update_post(@PathVariable Long id,String title,String contents,Model model){
+
+        //수정할때 제목이랑 게시글내용 둘다 채웠을 경우
+        if((!title.equals("")) && (!contents.equals(""))){
+
+            Posts post=postrepository.getOne(id);
+            post.setTitle(title);
+            post.setContent(contents);
+            //updating the modified_date of the posts object representing the current post being updated
+            post.setModifiedDate(LocalDate.now());
+            postrepository.save(post);
+            return "redirect:/";
+
+        }
+
+        model.addAttribute("post",postrepository.getOne(id));
+        return "page/fillbothfields";
+
 
     }
+
 
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
@@ -139,27 +162,6 @@ public class WebController{
         return "page/modifypost";
     }
 
-    @PutMapping("/updatepost/{id}")
-    public String update_post(@PathVariable Long id,String title,String contents,Model model){
-
-        //수정할때 제목이랑 게시글내용 둘다 채웠을 경우
-        if((!title.equals("")) && (!contents.equals(""))){
-
-            Posts post=postrepository.getOne(id);
-            post.setTitle(title);
-            post.setContent(contents);
-            //updating the modified_date of the posts object representing the current post being updated
-            post.setModifiedDate(LocalDate.now());
-            postrepository.save(post);
-            return "redirect:/";
-
-        }
-
-        model.addAttribute("post",postrepository.getOne(id));
-        return "page/fillbothfields";
-
-
-    }
 
 
 }
