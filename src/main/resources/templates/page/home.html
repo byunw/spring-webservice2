@@ -35,18 +35,19 @@
                 <tr>
                     <th>등록시간</th>
                     <th>제목</th>
+                    <th>게시글 댓글수</th>
                 </tr>
             </thead>
-
+                
             <tbody id="tbody">
                 {{#posts}}
                         <tr>
                             <td>{{createdDate}}</td>
                             <td><a href="/postdetail/{{id}}">{{title}}</a></td>
+                            <td>{{comment_number}}</td>
                         </tr>
                 {{/posts}}
             </tbody>
-
 
         </table>
 
