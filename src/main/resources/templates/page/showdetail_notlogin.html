@@ -54,29 +54,28 @@
 
         <tbody id="tbody">
             {{#post}}
-            <tr>
-                <td>{{content}}</td>
-            </tr>
+                <tr>
+                    <td>{{content}}</td>
+                </tr>
             {{/post}}
         </tbody>
 
     </table>
 
-
     <table>
+
+        <h2>댓글</h2>
 
         <tbody id="tbody2">
             {{#comments}}
                 <tr>
                     <td>{{content}}</td>
+                    <td>--------------------------------------------</td>
                 </tr>
             {{/comments}}
         </tbody>
 
     </table>
-
-
-
 
     <!--bootstrap js,jquery 연동  -->
     <script src="/js/lib/jquery.min.js"></script>
