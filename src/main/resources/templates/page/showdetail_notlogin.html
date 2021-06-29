@@ -7,9 +7,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
             <a class="navbar-brand" href="/">KW SINSA</a>
 
             <div class="navbar-nav ml-auto">
@@ -18,7 +16,6 @@
                 <a href="/loginpage"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button></a>
                 <a href="/users/form"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">회원가입</button></a>
             </div>
-
         </div>
     </nav>
 
@@ -62,9 +59,9 @@
 
     </table>
 
-
-
-    <h2>댓글</h2>
+    {{#comments}}
+        <h2>댓글</h2>
+    {{/comments}}
     
     <tbody id="tbody2">
             {{#comments}}
@@ -75,7 +72,6 @@
                </div>
             {{/comments}}
     </tbody>
-
 
     <!--bootstrap js,jquery 연동  -->
     <script src="/js/lib/jquery.min.js"></script>
