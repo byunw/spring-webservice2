@@ -5,34 +5,20 @@ import com.jojoldu.webservice2.domain.Comment.CommentRepository;
 import com.jojoldu.webservice2.domain.Users.User;
 import com.jojoldu.webservice2.domain.posts.Posts;
 import com.jojoldu.webservice2.domain.posts.PostsRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.util.List;
 
-//@Controller is indicating that WebController class serves the role of a controller
-//@AllArgsConstructor generates a constructor with parameter for each field in the class
-    //example
-        //@AllArgsConstructor
-        //public class Person{
-        //      private String firstname;
-        //      private String lastname;
-        //}
-        //constructor generated b/c of @AllArgsContructor
-        //public Person(String firstname,String lastname){
-        //      this.firstname=firstname;
-        //      this.lastname=lastname;
-        //}
-
-//since WebController class is Controller class and not have fields this class should not use @AllArgsConstructor
 @Controller
 public class WebController{
 
     @Autowired
     private PostsRepository postrepository;
+
     @Autowired
     private CommentRepository commentrepository;
 
@@ -40,7 +26,6 @@ public class WebController{
     public String show_home(Model model){
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
-
     }
 
     @DeleteMapping("/deletepost/{id}")
@@ -64,7 +49,6 @@ public class WebController{
         return "page/writepostpage";
     }
 
-    //equals() is used to check the value of a variable
     @PostMapping("/savepost")
     public String save_post(String title,String content,HttpSession session){
 
@@ -96,7 +80,7 @@ public class WebController{
         post.setComment_number(post.getComment_number()+1);
         postrepository.save(post);
         return "page/showcomment";
-        
+
     }
 
     @PutMapping("/updatepost/{id}")
@@ -118,9 +102,7 @@ public class WebController{
         model.addAttribute("post",postrepository.getOne(id));
         return "page/fillbothfields";
 
-
     }
-
 
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
@@ -129,9 +111,20 @@ public class WebController{
         Posts post=postrepository.getOne(id);
         Object loginuser=session.getAttribute("sessioneduser");
 
-        //로그인 안한 상태
+        //로그인 안한 상태에서 게시글 상세보기 눌렀을경우
         if(loginuser==null){
-            model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+
+            List<Comment> comments=commentrepository.findAllCommentforeachpost(id);
+            model.addAttribute("comments",comments);
+
+            if(comments.isEmpty()){
+                model.addAttribute("exist",false);
+            }
+
+            else{
+                model.addAttribute("exist",true);
+            }
+
             return "page/showdetail_notlogin";
         }
 
@@ -161,7 +154,5 @@ public class WebController{
         model.addAttribute("post",postrepository.getOne(id));
         return "page/modifypost";
     }
-
-
 
 }
