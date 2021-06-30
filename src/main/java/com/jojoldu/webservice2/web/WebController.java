@@ -24,8 +24,10 @@ public class WebController{
 
     @GetMapping("")//@GetMapping is same as @RequestMapping(method=RequestMethod.GET)
     public String show_home(Model model){
+
         model.addAttribute("posts",postrepository.findAll());
         return "page/home";
+
     }
 
     @DeleteMapping("/deletepost/{id}")
@@ -54,14 +56,12 @@ public class WebController{
 
         //게시글 작성 페이지에 제목값이랑 내용값이 둘다있을경우
         if((!title.equals("")) && (!content.equals(""))){
-
            Posts currentpost=new Posts(title,content,(User)session.getAttribute("sessioneduser"));
            LocalDate now=LocalDate.now();
            currentpost.setCreatedDate(now);
            currentpost.setModifiedDate(now);
            postrepository.save(currentpost);
            return "redirect:/";
-
         }
 
         else{
@@ -88,7 +88,6 @@ public class WebController{
 
         //수정할때 제목이랑 게시글내용 둘다 채웠을 경우
         if((!title.equals("")) && (!contents.equals(""))){
-
             Posts post=postrepository.getOne(id);
             post.setTitle(title);
             post.setContent(contents);
@@ -96,7 +95,6 @@ public class WebController{
             post.setModifiedDate(LocalDate.now());
             postrepository.save(post);
             return "redirect:/";
-
         }
 
         model.addAttribute("post",postrepository.getOne(id));
@@ -107,8 +105,8 @@ public class WebController{
     @GetMapping("/postdetail/{id}")
     public String show_detail(@PathVariable Long id,Model model,HttpSession session){
 
-        model.addAttribute("post",postrepository.getOne(id));
         Posts post=postrepository.getOne(id);
+        model.addAttribute("post",post);
         Object loginuser=session.getAttribute("sessioneduser");
 
         //로그인 안한 상태에서 게시글 상세보기 눌렀을경우
@@ -130,13 +128,25 @@ public class WebController{
 
         //로그인 상태
         else{
-
+            
             User User_Object=(User) loginuser;
 
-            //로그인 한 상태에서 자신이 작성한 글 상세보기 눌렀을 경우
+            //자신이 작성한 글 상세보기 눌렀을 경우
             if(post.getAuthor().getUserId().equals(User_Object.getUserId())){
-                model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+
+                List<Comment> comments=commentrepository.findAllCommentforeachpost(id);
+                model.addAttribute("comments",comments);
+
+                if(comments.isEmpty()){
+                    model.addAttribute("exist",false);
+                }
+
+                else{
+                    model.addAttribute("exist",true);
+                }
+
                 return "page/showdetailself";
+
             }
 
             //로그인한상태에서 남에 글 상세보기 눌렀을경우
