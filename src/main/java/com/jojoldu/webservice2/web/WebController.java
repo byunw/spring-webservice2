@@ -128,7 +128,7 @@ public class WebController{
 
         //로그인 상태
         else{
-            
+
             User User_Object=(User) loginuser;
 
             //자신이 작성한 글 상세보기 눌렀을 경우
@@ -151,8 +151,21 @@ public class WebController{
 
             //로그인한상태에서 남에 글 상세보기 눌렀을경우
             else{
-                model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
+                
+                List<Comment> comments=commentrepository.findAllCommentforeachpost(id);
+                model.addAttribute("comments",comments);
+
+                if(comments.isEmpty()){
+                    model.addAttribute("exist",false);
+                }
+
+                else{
+                    model.addAttribute("exist",true);
+                }
+
                 return "page/showdetail";
+
+
             }
 
         }
