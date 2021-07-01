@@ -70,15 +70,32 @@ public class WebController{
 
     }
 
+    //this needs to be refactored
+    //refactoring comes after understanding the code
     @PostMapping("/savecomment/{id}")
     public String save_comment(@PathVariable Long id,String content,Model model){
 
+        //saving a Comment object into Comment table
         commentrepository.save(new Comment(content,postrepository.getOne(id)));
+        //adds "post":Post object into model
         model.addAttribute("post",postrepository.getOne(id));
+        //adds "comments":list containing Comment objects
         model.addAttribute("comments",commentrepository.findAllCommentforeachpost(id));
         Posts post=postrepository.getOne(id);
         post.setComment_number(post.getComment_number()+1);
         postrepository.save(post);
+
+        List<Comment> comments=commentrepository.findAllCommentforeachpost(id);
+        model.addAttribute("comments",comments);
+
+        if(comments.isEmpty()){
+            model.addAttribute("exist",false);
+        }
+
+        else{
+            model.addAttribute("exist",true);
+        }
+
         return "page/showcomment";
 
     }
@@ -151,7 +168,7 @@ public class WebController{
 
             //로그인한상태에서 남에 글 상세보기 눌렀을경우
             else{
-                
+
                 List<Comment> comments=commentrepository.findAllCommentforeachpost(id);
                 model.addAttribute("comments",comments);
 
